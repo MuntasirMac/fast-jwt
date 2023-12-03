@@ -1,9 +1,10 @@
 from pymongo import MongoClient
-# from motor.motor_asyncio import AsyncIOMotorClient
+from decouple import config
 
+mongo_uri = config('mongo_uri')
 
 def connect_db():
-    client = MongoClient('mongodb://localhost:27017')
+    client = MongoClient(mongo_uri)
     db = client.get_database('fast-jwt')
 
     return db
